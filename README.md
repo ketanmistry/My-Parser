@@ -1,4 +1,12 @@
-My-Parser
+My Parser Library for CodeIgniter 2
 =========
 
-Extended Parser Library for CodeIgniter 2
+To install simply drop this file into your application/libraries folder.
+
+This library extension parses simple conditionals written in the following format:
+
+{if {your_var_in curly_brackets} == true}
+	// Show some html
+{else}
+	// Show some other html
+{/if}
