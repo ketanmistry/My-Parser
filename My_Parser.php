@@ -6,7 +6,7 @@
 * @library      Parser
 * @author       Ketan Mistry
 * @link 		http://dubbedcreative.com
-* @version		1.0
+* @version		1.1
 * @created		6 March 2014
 */
 
