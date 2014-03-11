@@ -14,15 +14,36 @@ class MY_Parser extends CI_Parser{
 
     function parse($template, $data, $return=FALSE)
     {    	
+
         $CI =& get_instance();
         $template = $CI->load->view($template, $data, TRUE);
-        
-        $template = $this->_parse($template, $data, $return);
-        
+ 
+		if ($template == '') {
+			return FALSE;
+		}
+
+		foreach ($data as $key => $val) {
+			if (is_array($val))
+			{
+				$template = $this->_parse_pair($key, $val, $template);
+			}
+			else
+			{
+				$template = $this->_parse_single($key, (string)$val, $template);
+			}
+		}
+
         // Check for conditional statements
         $template = $this->_parse_conditionals($template, $data);
-        
+
+		if ($return == FALSE)
+		{
+			$CI =& get_instance();
+			$CI->output->append_output($template);
+		}
+
         return $template;
+
     }
 
 	#------------------------------------------------------
